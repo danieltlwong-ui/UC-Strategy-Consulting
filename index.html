@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UC Strategy Group — UC Admissions Consulting</title>
+  <meta name="description" content="UC admissions consulting with a 100% acceptance rate. Expert guidance on PIQs, activities, and strategy for all 9 UC campuses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; color: #003262; background: #fff; font-size: 16px; line-height: 1.6; }
+
+    /* Berkeley palette
+       Blue:  #003262
+       Gold:  #FDB515
+       Light: #EEF2F7  (blue-tinted off-white)
+       Muted: #5C7A9F
+    */
+
+    /* ── NAV ──────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 64px;
+      background: rgba(0, 50, 98, 0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-logo { font-size: 15px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+    .nav-logo span { color: #FDB515; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none; letter-spacing: 0.02em; transition: color .15s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: #FDB515; color: #003262; border: none; padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; transition: filter .15s; }
+    .nav-cta:hover { filter: brightness(0.88); }
+    .nav-hamburger { display: none; background: none; border: none; color: rgba(255,255,255,0.65); font-size: 22px; cursor: pointer; }
+
+    /* ── HERO ──────────────────────────────────────────────── */
+    .hero {
+      background: #003262;
+      padding: 7rem 2.5rem 7rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(253,181,21,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      border: 1px solid rgba(253,181,21,0.35);
+      background: rgba(253,181,21,0.08);
+      color: #FDB515; font-size: 11px; font-weight: 600;
+      padding: 5px 15px; border-radius: 99px; margin-bottom: 2rem;
+      letter-spacing: 0.07em; text-transform: uppercase;
+    }
+    .hero h1 { font-size: 56px; font-weight: 600; color: #fff; line-height: 1.1; letter-spacing: -0.03em; max-width: 640px; margin: 0 auto 1.5rem; }
+    .hero h1 em { font-style: normal; color: #FDB515; }
+    .hero-sub { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; max-width: 420px; margin: 0 auto 3rem; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-gold { background: #FDB515; color: #003262; border: none; padding: 14px 30px; border-radius: 7px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: filter .15s; }
+    .btn-gold:hover { filter: brightness(0.88); }
+    .btn-outline-white { background: transparent; color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.2); padding: 14px 30px; border-radius: 7px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color .15s, color .15s; }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+    .hero-stats { margin-top: 5rem; display: flex; justify-content: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 3rem; }
+    .stat { flex: 1; max-width: 180px; text-align: center; padding: 0 1.5rem; border-right: 1px solid rgba(255,255,255,0.08); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 34px; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
+    .stat-num span { color: #fff; }
+    .stat-label { font-size: 11px; color: rgba(255,255,255,0.38); margin-top: 5px; letter-spacing: 0.03em; }
+
+    /* ── SECTIONS ──────────────────────────────────────────── */
+    .section { padding: 6rem 2.5rem; }
+    .section-light { background: #EEF2F7; }
+    .section-blue { background: #003262; }
+    .inner { max-width: 900px; margin: 0 auto; }
+    .inner-sm { max-width: 660px; margin: 0 auto; }
+    .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #FDB515; display: block; margin-bottom: 10px; }
+    .eyebrow-dim { color: rgba(253,181,21,0.65); }
+    .section-heading { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; color: #003262; line-height: 1.2; margin-bottom: 1rem; }
+    .section-heading-white { color: #fff; }
+    .section-sub { font-size: 15px; color: #5C7A9F; line-height: 1.7; max-width: 480px; }
+    .section-sub-white { color: rgba(255,255,255,0.4); }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ── RATE BANNER ───────────────────────────────────────── */
+    .rate-banner { background: #003262; padding: 4.5rem 2.5rem; text-align: center; }
+    .rate-big { font-size: 100px; font-weight: 700; color: #FDB515; letter-spacing: -0.04em; line-height: 1; }
+    .rate-sub { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 1rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* ── EDGE GRID ─────────────────────────────────────────── */
+    .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #d4dde8; border: 1px solid #d4dde8; border-radius: 12px; overflow: hidden; }
+    .edge-card { background: #fff; padding: 2rem; transition: background .2s; }
+    .edge-card:hover { background: #f7f9fc; }
+    .edge-icon { font-size: 20px; color: #003262; margin-bottom: 1.25rem; display: block; }
+    .edge-card h3 { font-size: 15px; font-weight: 600; color: #003262; margin-bottom: 7px; }
+    .edge-card p { font-size: 13px; color: #5C7A9F; line-height: 1.65; }
+
+    /* ── CAMPUS GRID ───────────────────────────────────────── */
+    .campuses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .campus-card { background: #fff; border: 1px solid #d4dde8; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; transition: border-color .2s, transform .2s; text-decoration: none; color: inherit; }
+    .campus-card:hover { border-color: #FDB515; transform: translateY(-2px); }
+    .campus-logo-wrap { width: 68px; height: 68px; display: flex; align-items: center; justify-content: center; }
+    .campus-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+    .campus-logo-fallback { width: 68px; height: 68px; border-radius: 50%; background: #003262; display: none; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #FDB515; }
+    .campus-name { font-size: 13px; font-weight: 600; color: #003262; }
+    .campus-loc { font-size: 11px; color: #8fa3b8; }
+    .campus-admit { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #1a6b3a; background: #e6f4ec; padding: 3px 10px; border-radius: 99px; }
+
+    /* ── DIAGNOSTIC ────────────────────────────────────────── */
+    .diag-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .diag-steps { display: flex; flex-direction: column; }
+    .diag-step { display: flex; gap: 16px; align-items: flex-start; padding: 1.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .diag-step:last-child { border-bottom: none; }
+    .diag-num { font-size: 11px; font-weight: 700; color: #FDB515; letter-spacing: 0.04em; width: 22px; flex-shrink: 0; margin-top: 2px; }
+    .diag-step h4 { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+    .diag-step p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; }
+
+    /* ── COUNSELORS ────────────────────────────────────────── */
+    .counselors-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .counselor-card { background: #fff; border: 1px solid #d4dde8; border-radius: 12px; padding: 2rem; position: relative; overflow: hidden; }
+    .counselor-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #FDB515; }
+    .c-photo-wrap { width: 110px; height: 110px; border-radius: 50%; overflow: hidden; background: #EEF2F7; border: 3px solid #FDB515; flex-shrink: 0; }
+    .c-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .c-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 600; color: #8fa3b8; }
+    .c-school-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff8e1; color: #7a5500; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px; margin-bottom: 0.5rem; }
+    .c-school-badge img { width: 15px; height: 15px; object-fit: contain; }
+    .c-name { font-size: 22px; font-weight: 600; color: #003262; margin-bottom: 3px; }
+    .c-role { font-size: 13px; color: #5C7A9F; margin-bottom: 1rem; line-height: 1.4; }
+    .c-bio { font-size: 13px; color: #5C7A9F; line-height: 1.75; margin-bottom: 1.25rem; }
+    .c-expertise-title { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #003262; margin-bottom: 0.6rem; }
+    .c-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 1.25rem; }
+    .c-tag { font-size: 12px; color: #003262; background: #EEF2F7; padding: 5px 12px; border-radius: 99px; }
+    .c-funfact { background: #fff8e1; border-left: 3px solid #FDB515; border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 12px; color: #7a5500; line-height: 1.6; }
+
+    /* ── PROCESS ───────────────────────────────────────────── */
+    .process-track { display: flex; flex-direction: column; border-left: 1px solid #d4dde8; margin-left: 20px; }
+    .process-step { display: flex; gap: 20px; padding: 0 0 2.5rem; position: relative; }
+    .process-step:last-child { padding-bottom: 0; }
+    .p-marker { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #d4dde8; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #003262; flex-shrink: 0; margin-left: -20px; position: relative; z-index: 1; }
+    .p-body { padding-top: 8px; }
+    .p-body h3 { font-size: 15px; font-weight: 600; color: #003262; margin-bottom: 5px; }
+    .p-body p { font-size: 13px; color: #5C7A9F; line-height: 1.65; }
+    .p-badge { display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: #e6f4ec; color: #1a6b3a; padding: 3px 9px; border-radius: 99px; }
+
+    /* ── PRICING ───────────────────────────────────────────── */
+    .essay-callout {
+      background: #fff; border: 1px solid #d4dde8; border-radius: 12px;
+      padding: 1.75rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .essay-left { display: flex; align-items: center; gap: 1rem; }
+    .essay-icon { font-size: 22px; color: #003262; }
+    .essay-label { font-size: 15px; font-weight: 600; color: #003262; }
+    .essay-sub { font-size: 13px; color: #5C7A9F; margin-top: 2px; }
+    .essay-price { font-size: 26px; font-weight: 600; color: #003262; white-space: nowrap; }
+    .essay-price span { font-size: 13px; font-weight: 400; color: #5C7A9F; }
+    .essay-btn { background: #EEF2F7; color: #003262; border: none; padding: 10px 20px; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .15s; }
+    .essay-btn:hover { background: #dde5f0; }
+
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .plan-card { background: #fff; border: 1px solid #d4dde8; border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; }
+    .plan-card.featured { background: #003262; border-color: #003262; }
+    .plan-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8fa3b8; margin-bottom: 1.25rem; }
+    .plan-tag-featured { color: rgba(255,255,255,0.35); }
+    .plan-popular { display: inline-block; background: #FDB515; color: #003262; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; margin-bottom: 0.75rem; }
+    .plan-price { font-size: 40px; font-weight: 600; color: #003262; letter-spacing: -0.025em; line-height: 1; }
+    .plan-price-white { color: #fff; }
+    .plan-cycle { font-size: 12px; color: #8fa3b8; margin-top: 4px; margin-bottom: 1.75rem; }
+    .plan-cycle-dim { color: rgba(255,255,255,0.28); }
+    .plan-divider { border: none; border-top: 1px solid #e8edf3; margin: 0 0 1.5rem; }
+    .plan-divider-dark { border-top-color: rgba(255,255,255,0.09); }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 2rem; }
+    .plan-features li { font-size: 13px; color: #374151; display: flex; gap: 9px; align-items: flex-start; }
+    .plan-features li i { color: #1a6b3a; flex-shrink: 0; margin-top: 2px; font-size: 15px; }
+    .plan-features-white li { color: rgba(255,255,255,0.6); }
+    .plan-features-white li i { color: #FDB515; }
+    .plan-btn { display: block; width: 100%; text-align: center; text-decoration: none; padding: 12px; border-radius: 7px; font-size: 13px; font-weight: 600; transition: filter .15s; }
+    .plan-btn:hover { filter: brightness(0.88); }
+    .plan-btn-blue { background: #003262; color: #fff; border: none; }
+    .plan-btn-gold { background: #FDB515; color: #003262; border: none; }
+    .plan-btn-outline { background: transparent; color: #003262; border: 1px solid #c8d4e0; }
+
+    /* ── FAQ ───────────────────────────────────────────────── */
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid #d4dde8; }
+    .faq-btn { background: none; border: none; cursor: pointer; width: 100%; text-align: left; padding: 1.25rem 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: #003262; font-family: inherit; }
+    .faq-chevron { color: #8fa3b8; font-size: 16px; flex-shrink: 0; transition: transform .2s; }
+    .faq-a { font-size: 13px; color: #5C7A9F; line-height: 1.75; padding-bottom: 1.25rem; display: none; }
+
+    /* ── CTA ───────────────────────────────────────────────── */
+    .cta-section { background: #FDB515; padding: 6rem 2.5rem; text-align: center; }
+    .cta-section h2 { font-size: 40px; font-weight: 700; color: #003262; letter-spacing: -0.025em; margin-bottom: 0.75rem; line-height: 1.2; }
+    .cta-section p { font-size: 15px; color: rgba(0,50,98,0.55); margin-bottom: 2.5rem; }
+    .btn-blue { background: #003262; color: #fff; border: none; padding: 15px 32px; border-radius: 7px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: filter .15s; }
+    .btn-blue:hover { filter: brightness(0.88); }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
+    .footer { background: #001e3c; padding: 2.5rem; }
+    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.28); letter-spacing: 0.05em; text-transform: uppercase; }
+    .footer-logo span { color: rgba(253,181,21,0.45); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.22); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.5); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.14); }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hiw-grid { grid-template-columns: 1fr !important; }
+      .hero h1 { font-size: 36px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: #003262; padding: 2rem 2.5rem; }
+      .nav-links.open li a { font-size: 18px; padding: 1rem 0; display: block; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .edge-grid { grid-template-columns: 1fr; }
+      .campuses-grid { grid-template-columns: repeat(2, 1fr); }
+      .counselors-grid { grid-template-columns: 1fr; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .diag-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-stats { flex-wrap: wrap; }
+      .stat { min-width: 120px; }
+      .rate-big { font-size: 72px; }
+      .section { padding: 4rem 1.5rem; }
+      .section-heading { font-size: 28px; }
+      .essay-callout { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+    /* ── ANIMATIONS ────────────────────────────────────────── */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-pill    { animation: heroFadeUp .65s .05s both cubic-bezier(.22,.61,.36,1); }
+    .hero h1      { animation: heroFadeUp .7s  .18s both cubic-bezier(.22,.61,.36,1); }
+    .hero-sub     { animation: heroFadeUp .7s  .32s both cubic-bezier(.22,.61,.36,1); }
+    .hero-actions { animation: heroFadeUp .7s  .44s both cubic-bezier(.22,.61,.36,1); }
+    .hero-stats   { animation: heroFadeUp .8s  .58s both cubic-bezier(.22,.61,.36,1); }
+
+    .reveal { opacity: 0; transform: translateY(22px); }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* Enhanced hover effects */
+    .edge-card { transition: background .2s, box-shadow .28s, transform .28s, opacity .6s; }
+    .edge-card:hover { background: #f7f9fc; box-shadow: 0 8px 28px rgba(0,50,98,.09); transform: translateY(-3px); }
+    .counselor-card { transition: box-shadow .28s, transform .28s, opacity .6s; }
+    .counselor-card:hover { box-shadow: 0 12px 36px rgba(0,50,98,.10); transform: translateY(-3px); }
+    .plan-card { transition: box-shadow .28s, transform .28s, opacity .6s; }
+    .plan-card:hover:not(.featured) { box-shadow: 0 10px 32px rgba(0,50,98,.09); transform: translateY(-3px); }
+    .plan-card.featured:hover { box-shadow: 0 14px 40px rgba(0,50,98,.22); transform: translateY(-3px); }
+    .process-step { transition: opacity .6s, transform .6s; }
+    .faq-item { transition: opacity .6s, transform .6s; }
+    .diag-step { transition: opacity .6s, transform .6s; }
+    .essay-callout { transition: opacity .6s, transform .6s; }
+
+    /* ── MOBILE: campus & hiw grids ──────────────────────────── */
+    @media (max-width: 768px) {
+      .campus-top { grid-template-columns: repeat(3,1fr) !important; }
+      .campus-bot { grid-template-columns: repeat(2,1fr) !important; max-width: 100% !important; }
+    }
+    @media (max-width: 480px) {
+      .campus-top { grid-template-columns: repeat(2,1fr) !important; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to main content</a>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav">
+    <a href="#" aria-label="UC Strategy Group home" class="nav-logo">UC <span>Strategy</span> Group</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#campuses">Campuses</a></li>
+      <li><a href="#diagnostic">Free session</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-controls="nav-links" aria-expanded="false" onclick="toggleNav(this)" aria-label="Open menu">
+      <i class="ti ti-menu-2" aria-hidden="true"></i>
+    </button>
+    <a href="#diagnostic" class="nav-cta">Free session →</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-pill" role="text">
+    <i class="ti ti-circle-check" aria-hidden="true"></i>
+    100% UC acceptance rate
+  </div>
+  <h1 id="hero-h">Your UC application,<br><em>perfected.</em></h1>
+  <p class="hero-sub">Expert strategy, PIQ coaching, and hands-on guidance from people who got into every single UC.</p>
+  <div class="hero-actions">
+    <a href="#diagnostic" class="btn-gold">Book free diagnostic →</a>
+    <a href="#how-it-works" class="btn-outline-white">See how it works</a>
+  </div>
+  <div class="hero-stats" role="list">
+    <div class="stat" role="listitem">
+      <div class="stat-num"><span>100</span>%</div>
+      <div class="stat-label">UC acceptance rate</div>
+    </div>
+    <div class="stat" role="listitem">
+      <div class="stat-num">All 9</div>
+      <div class="stat-label">UC campuses admitted to</div>
+    </div>
+    <div class="stat" role="listitem">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">diagnostic first session</div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section" id="approach" aria-labelledby="approach-h">
+  <div class="inner">
+    <div style="margin-bottom: 3.5rem;">
+      <span class="eyebrow">Our approach</span>
+      <h2 class="section-heading" id="approach-h">Every angle of your application, covered.</h2>
+      <p class="section-sub">We work on the parts that matter most — and that most students get wrong.</p>
+    </div>
+    <div class="edge-grid">
+      <div class="edge-card">
+        <i class="ti ti-file-text edge-icon" aria-hidden="true"></i>
+        <h3>Personal Insight Questions</h3>
+        <p>Find the right stories, sharpen your voice, and make every one of your 4 PIQs genuinely memorable to UC readers.</p>
+      </div>
+      <div class="edge-card">
+        <i class="ti ti-trophy edge-icon" aria-hidden="true"></i>
+        <h3>Activities and awards</h3>
+        <p>How you frame your extracurriculars and honors is a craft. We help you show depth, leadership, and impact the way UC readers want to see it.</p>
+      </div>
+      <div class="edge-card">
+        <i class="ti ti-chart-dots edge-icon" aria-hidden="true"></i>
+        <h3>Major and campus strategy</h3>
+        <p>Major choice dramatically affects your admit odds. We run the numbers and build a list that maximizes chances without compromising your goals.</p>
+      </div>
+      <div class="edge-card">
+        <i class="ti ti-calendar-check edge-icon" aria-hidden="true"></i>
+        <h3>Timeline management</h3>
+        <p>A custom roadmap from summer through the November deadline — so nothing gets rushed and nothing gets missed.</p>
+      </div>
+      <div class="edge-card">
+        <i class="ti ti-layout-list edge-icon" aria-hidden="true"></i>
+        <h3>Full application review</h3>
+        <p>Before you submit, we go through every section — courses, grades, activities, honors — and catch anything that could cost you.</p>
+      </div>
+      <div class="edge-card">
+        <i class="ti ti-zoom-check edge-icon" aria-hidden="true"></i>
+        <h3>Free diagnostic first</h3>
+        <p>Before you pay anything, we assess your full profile and give you an honest read on your odds at each campus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-light" id="how-it-works" aria-labelledby="hiw-h">
+  <div class="inner">
+    <div class="text-center" style="margin-bottom: 3.5rem;">
+      <span class="eyebrow">How it works</span>
+      <h2 class="section-heading" id="hiw-h">Three steps to your strongest application.</h2>
+      <p class="section-sub">A focused, proven process built around your individual profile and goals.</p>
+    </div>
+    <div class="hiw-grid" style="display:grid; grid-template-columns: repeat(3,1fr); gap: 24px;">
+
+      <div style="background:#fff; border:1px solid #d4dde8; border-radius:14px; padding:2rem; position:relative;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#FDB515; margin-bottom:1rem;">Step 01</div>
+        <h3 style="font-size:17px; font-weight:600; color:#003262; margin-bottom:0.75rem;">Free diagnostic</h3>
+        <p style="font-size:13px; color:#5C7A9F; line-height:1.7;">We start by understanding exactly where you stand. We review your GPA, coursework, activities, and test scores and give you an honest, campus-by-campus read on your chances — before you spend a dollar.</p>
+      </div>
+
+      <div style="background:#003262; border:1px solid #003262; border-radius:14px; padding:2rem; position:relative;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#FDB515; margin-bottom:1rem;">Step 02</div>
+        <h3 style="font-size:17px; font-weight:600; color:#fff; margin-bottom:0.75rem;">Strengths and strategy</h3>
+        <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.7;">We identify your unique strengths and build a strategy around them — campus list, major selection, PIQ angles, and activities framing — all aligned to your short and long-term goals to maximize every part of your application.</p>
+      </div>
+
+      <div style="background:#fff; border:1px solid #d4dde8; border-radius:14px; padding:2rem; position:relative;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#FDB515; margin-bottom:1rem;">Step 03</div>
+        <h3 style="font-size:17px; font-weight:600; color:#003262; margin-bottom:0.75rem;">Build, refine, submit</h3>
+        <p style="font-size:13px; color:#5C7A9F; line-height:1.7;">We work through every component of your UC application with you — drafting and refining your PIQs, polishing your activities section, and doing a full review before you hit submit so nothing is left to chance.</p>
+      </div>
+
+    </div>
+    <div class="text-center" style="margin-top:2.5rem;">
+      <a href="https://calendly.com/danieltlwong-berkeley" class="btn-gold">Start with a free diagnostic →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUSES -->
+<section class="section section-light" id="campuses" aria-labelledby="campuses-h">
+  <div class="inner">
+    <div class="text-center" style="margin-bottom:3rem;">
+      <span class="eyebrow">Admissions record</span>
+      <h2 class="section-heading" id="campuses-h">Admitted to all 9 UC campuses.</h2>
+      <p class="section-sub">We applied to every UC and got into every one — so we know exactly what each campus is looking for.</p>
+    </div>
+    <div class="campus-top" style="display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-bottom:16px;">
+      <!-- UCB -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/berkeley.edu" alt="UC Berkeley" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCB</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UC Berkeley</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+      <!-- UCLA -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/ucla.edu" alt="UCLA" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCLA</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UCLA</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+      <!-- UCSD -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/ucsd.edu" alt="UC San Diego" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCSD</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UC San Diego</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+      <!-- UCSB -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/ucsb.edu" alt="UC Santa Barbara" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCSB</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UC Santa Barbara</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+      <!-- UCI -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/uci.edu" alt="UC Irvine" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCI</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UC Irvine</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+    </div>
+    <!-- Row 2: 4 centered -->
+    <div class="campus-bot" style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:680px; margin:0 auto;">
+      <!-- UCD -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/ucdavis.edu" alt="UC Davis" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCD</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UC Davis</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+      <!-- UCSC -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/ucsc.edu" alt="UC Santa Cruz" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCSC</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UC Santa Cruz</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+      <!-- UCR -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/ucr.edu" alt="UC Riverside" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCR</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UC Riverside</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+      <!-- UCM -->
+      <div style="background:#fff;border:1px solid #d4dde8;border-radius:14px;padding:1.5rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:70px;height:70px;border-radius:50%;border:3px solid #003262;outline:2px solid #FDB515;outline-offset:2px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <img src="https://logo.clearbit.com/ucmerced.edu" alt="UC Merced" style="width:44px;height:44px;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-size:13px;font-weight:700;color:#003262;\'>UCM</span>'">
+        </div>
+        <div style="font-size:12px;font-weight:600;color:#003262;line-height:1.3;">UC Merced</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#1a6b3a;background:#e6f4ec;padding:2px 8px;border-radius:99px;">Admitted</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIC -->
+<section class="section section-blue" id="diagnostic" aria-labelledby="diag-h">
+  <div class="inner">
+    <div class="diag-wrapper">
+      <div>
+        <span class="eyebrow eyebrow-dim">Free first session</span>
+        <h2 class="section-heading section-heading-white" id="diag-h">A real working session — before you pay anything.</h2>
+        <p class="section-sub section-sub-white" style="margin-bottom: 2rem;">We sit down, review your full profile, and give you an honest picture of where you stand and exactly what it'll take to get in.</p>
+        <a href="https://calendly.com/danieltlwong-berkeley" class="btn-gold">Book your free session →</a>
+      </div>
+      <div class="diag-steps" role="list">
+        <div class="diag-step" role="listitem">
+          <div class="diag-num">01</div>
+          <div><h4>Profile audit</h4><p>GPA, coursework, test scores, and activities reviewed against the real admit profile of each campus you're targeting.</p></div>
+        </div>
+        <div class="diag-step" role="listitem">
+          <div class="diag-num">02</div>
+          <div><h4>Honest admit odds</h4><p>Campus by campus, major by major — a realistic read with no sugarcoating.</p></div>
+        </div>
+        <div class="diag-step" role="listitem">
+          <div class="diag-num">03</div>
+          <div><h4>Gap identification</h4><p>We pinpoint what's strong, what needs work, and where to focus before you write a single word.</p></div>
+        </div>
+        <div class="diag-step" role="listitem">
+          <div class="diag-num">04</div>
+          <div><h4>Strategy preview</h4><p>You leave with a clear picture — school list, major strategy, and PIQ angle — before any commitment.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNSELORS -->
+<section class="section" aria-labelledby="counselors-h">
+  <div class="inner">
+    <div style="margin-bottom: 3rem;">
+      <span class="eyebrow">Your consultants</span>
+      <h2 class="section-heading" id="counselors-h">Meet the team.</h2>
+      <p class="section-sub">Admitted to all 9 UCs. Graduated from UC Berkeley and UCLA. Here to help you do the same.</p>
+    </div>
+    <div class="counselors-grid">
+
+      <!-- Daniel Wong -->
+      <div class="counselor-card">
+        <div style="display:flex;gap:1.75rem;align-items:flex-start;margin-bottom:1.5rem;">
+          <div class="c-photo-wrap" style="flex-shrink:0;">
+            <img src="daniel.png" alt="Daniel Wong" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="c-photo-placeholder" style="display:none">DW</div>
+          </div>
+          <div>
+            <div class="c-school-badge">
+              <img src="https://logo.clearbit.com/berkeley.edu" alt="UC Berkeley" onerror="this.style.display='none'">
+              Haas School of Business · Berkeley
+            </div>
+            <div class="c-name">Daniel Wong</div>
+            <div class="c-role">Global Management Program · Business Administration &amp; Data Science</div>
+          </div>
+        </div>
+        <p class="c-bio">Daniel combines business strategy with quantitative analysis through UC Berkeley's prestigious Global Management Program. His academic focus spans entrepreneurship, artificial intelligence, market analysis, and organizational strategy. He helps students build compelling applications that highlight authentic narratives, leadership, and intellectual curiosity — connecting their passions to long-term goals.</p>
+        <div class="c-expertise-title">Areas of expertise</div>
+        <div class="c-tags">
+          <span class="c-tag">Business &amp; economics admissions</span>
+          <span class="c-tag">Data science pathways</span>
+          <span class="c-tag">PIQ development</span>
+          <span class="c-tag">Leadership &amp; extracurriculars</span>
+          <span class="c-tag">Activity descriptions</span>
+          <span class="c-tag">Major strategy</span>
+        </div>
+        <div class="c-funfact"><strong>Fun fact:</strong> Daniel has a 6-year-old German Shepherd named Big Boy — the most enthusiastic (and loudest) audience for application drafts in the room.</div>
+      </div>
+
+      <!-- Emily Hui -->
+      <div class="counselor-card">
+        <div style="display:flex;gap:1.75rem;align-items:flex-start;margin-bottom:1.5rem;">
+          <div class="c-photo-wrap" style="flex-shrink:0;">
+            <img src="emily.png" alt="Emily Hui" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="c-photo-placeholder" style="display:none">EH</div>
+          </div>
+          <div>
+            <div class="c-school-badge">
+              <img src="https://logo.clearbit.com/berkeley.edu" alt="UC Berkeley" onerror="this.style.display='none'">
+              UC Berkeley
+            </div>
+            <div class="c-name">Emily Hui</div>
+            <div class="c-role">Applied Mathematics &amp; Computer Science</div>
+          </div>
+        </div>
+        <p class="c-bio">Emily studies Applied Mathematics and Computer Science at UC Berkeley, where she explores the intersection of analytical thinking, computational problem-solving, and emerging technologies. She works closely with students to strengthen essays, refine activity lists, and present complex interests in a way that reflects both intellectual depth and personal authenticity.</p>
+        <div class="c-expertise-title">Areas of expertise</div>
+        <div class="c-tags">
+          <span class="c-tag">CS &amp; engineering admissions</span>
+          <span class="c-tag">Math &amp; quantitative disciplines</span>
+          <span class="c-tag">Research presentation</span>
+          <span class="c-tag">Essay editing &amp; storytelling</span>
+          <span class="c-tag">Academic planning</span>
+          <span class="c-tag">STEM profile building</span>
+        </div>
+        <div class="c-funfact"><strong>Fun fact:</strong> Emily is a devoted food enthusiast who loves exploring culinary scenes and touring local eateries — she'll tell you great essays and great meals share the same secret: finding exactly the right ingredients.</div>
+      </div>
+
+      <!-- Surdish Randhawa -->
+      <div class="counselor-card">
+        <div style="display:flex;gap:1.75rem;align-items:flex-start;margin-bottom:1.5rem;">
+          <div class="c-photo-wrap" style="flex-shrink:0;">
+            <img src="surdish.png" alt="Surdish Randhawa" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="c-photo-placeholder" style="display:none">SR</div>
+          </div>
+          <div>
+            <div class="c-school-badge">
+              <img src="https://logo.clearbit.com/ucla.edu" alt="UCLA" onerror="this.style.display='none'">
+              UCLA
+            </div>
+            <div class="c-name">Surdish Randhawa</div>
+            <div class="c-role">Molecular, Cell &amp; Developmental Biology · Pre-Med</div>
+          </div>
+        </div>
+        <p class="c-bio">Surdish is a UCLA student pursuing Molecular, Cell &amp; Developmental Biology with aspirations in medicine and healthcare. Alongside his scientific studies, he has cultivated a strong interest in writing, communication, and the human side of medicine. His perspective helps students articulate meaningful experiences, community impact, and long-term aspirations with authenticity and purpose.</p>
+        <div class="c-expertise-title">Areas of expertise</div>
+        <div class="c-tags">
+          <span class="c-tag">Pre-med admissions</span>
+          <span class="c-tag">Biological sciences</span>
+          <span class="c-tag">Personal statement development</span>
+          <span class="c-tag">Service &amp; leadership positioning</span>
+          <span class="c-tag">Research pathways</span>
+          <span class="c-tag">Healthcare track</span>
+        </div>
+        <div class="c-funfact"><strong>Fun fact:</strong> Surdish qualified for the Brawl Stars Global Championship — and brings that same competitive edge and strategic precision to every application he helps build.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section-light" id="process" aria-labelledby="process-h">
+  <div class="inner-sm">
+    <div style="margin-bottom: 3rem;">
+      <span class="eyebrow">The process</span>
+      <h2 class="section-heading" id="process-h">What working together looks like.</h2>
+    </div>
+    <div class="process-track" role="list">
+      <div class="process-step" role="listitem">
+        <div class="p-marker" aria-hidden="true">1</div>
+        <div class="p-body">
+          <h3>Free diagnostic session <span class="p-badge">Free · 30 min</span></h3>
+          <p>Profile audit, admit odds by campus, gap analysis, and a strategy preview — before you pay anything.</p>
+        </div>
+      </div>
+      <div class="process-step" role="listitem">
+        <div class="p-marker" aria-hidden="true">2</div>
+        <div class="p-body">
+          <h3>Strategy and school list</h3>
+          <p>We finalize your campus list, major selections, and overall application approach — including how to navigate impacted programs.</p>
+        </div>
+      </div>
+      <div class="process-step" role="listitem">
+        <div class="p-marker" aria-hidden="true">3</div>
+        <div class="p-body">
+          <h3>PIQ development</h3>
+          <p>Brainstorm all 4 Personal Insight Questions together, then multiple rounds of drafts and feedback until each one is genuinely strong.</p>
+        </div>
+      </div>
+      <div class="process-step" role="listitem">
+        <div class="p-marker" aria-hidden="true">4</div>
+        <div class="p-body">
+          <h3>Activities and honors review</h3>
+          <p>We go through how you're presenting every extracurricular, award, and experience to make sure nothing is undersold.</p>
+        </div>
+      </div>
+      <div class="process-step" role="listitem">
+        <div class="p-marker" aria-hidden="true">5</div>
+        <div class="p-body">
+          <h3>Final application sweep</h3>
+          <p>A complete review of every section before you hit submit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing" aria-labelledby="pricing-h">
+  <div class="inner">
+    <div class="text-center" style="margin-bottom: 3rem;">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="section-heading" id="pricing-h">Simple plans, no surprises.</h2>
+      <p class="section-sub">All plans start with a free diagnostic. Payment plans available on request.</p>
+    </div>
+
+    <!-- Per-essay option -->
+    <div class="essay-callout" aria-label="Single essay review — $50 per essay">
+      <div class="essay-left">
+        <i class="ti ti-file-pencil essay-icon" aria-hidden="true"></i>
+        <div>
+          <div class="essay-label">Single PIQ review</div>
+          <div class="essay-sub">One round of detailed written feedback on any Personal Insight Question — no package needed.</div>
+        </div>
+      </div>
+      <div class="essay-price">$50 <span>/ essay</span></div>
+      <a href="https://calendly.com/danieltlwong-berkeley" class="essay-btn">Get feedback →</a>
+    </div>
+
+    <!-- Plans -->
+    <div class="plans-grid">
+
+      <div class="plan-card">
+        <div class="plan-tag">Starter</div>
+        <div class="plan-price">$499</div>
+        <div class="plan-cycle">one-time</div>
+        <hr class="plan-divider">
+        <ul class="plan-features" aria-label="Starter plan features">
+          <li><i class="ti ti-check" aria-hidden="true"></i>Free diagnostic included</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Application strategy session</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>PIQ brainstorm &amp; angle planning</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Activities list planning</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Email support</li>
+        </ul>
+        <a href="https://calendly.com/danieltlwong-berkeley" class="plan-btn plan-btn-outline">Get started</a>
+      </div>
+
+      <div class="plan-card featured" aria-label="Most popular plan">
+        <div class="plan-popular">Most popular</div>
+        <div class="plan-tag plan-tag-featured">Complete</div>
+        <div class="plan-price plan-price-white">$1,499</div>
+        <div class="plan-cycle plan-cycle-dim">full application cycle</div>
+        <hr class="plan-divider plan-divider-dark">
+        <ul class="plan-features plan-features-white" aria-label="Complete plan features">
+          <li><i class="ti ti-check" aria-hidden="true"></i>Everything in Starter</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>3 full rounds of PIQ feedback</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Activities &amp; honors deep dive</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Full application review before submit</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Major selection coaching</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Unlimited email support</li>
+        </ul>
+        <a href="https://calendly.com/danieltlwong-berkeley" class="plan-btn plan-btn-gold">Get started →</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-tag">All In</div>
+        <div class="plan-price">$2,999</div>
+        <div class="plan-cycle">full application cycle</div>
+        <hr class="plan-divider">
+        <ul class="plan-features" aria-label="All In plan features">
+          <li><i class="ti ti-check" aria-hidden="true"></i>Everything in Complete</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Unlimited PIQ rounds</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Priority response time</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Decision day debrief</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Waitlist &amp; appeal strategy</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i>Both consultants on your file</li>
+        </ul>
+        <a href="https://calendly.com/danieltlwong-berkeley" class="plan-btn plan-btn-blue">Get started</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-light" aria-labelledby="faq-h">
+  <div class="inner-sm">
+    <div style="margin-bottom: 2.5rem;">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="section-heading" id="faq-h">Common questions.</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+          What happens in the free diagnostic session?
+          <i class="ti ti-chevron-down faq-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="faq-a">It's a real working session — not a sales call. We review your profile, walk through admit odds campus by campus, identify what needs work, and sketch your strategy. You walk away with something useful regardless of whether you sign up.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+          What's included in a single PIQ review?
+          <i class="ti ti-chevron-down faq-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="faq-a">You send us your draft and we return detailed written feedback — on structure, story choice, tone, and word count — within 48 hours. It's one round of feedback per essay. If you want back-and-forth revision, a package plan is the better fit.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+          How is the UC application different from Common App?
+          <i class="ti ti-chevron-down faq-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="faq-a">The UC application is entirely separate — no teacher recommendations, no Common App essay. You write 4 Personal Insight Questions (350 words each) and submit one application to all 9 UCs at once. Major choice also affects your admit odds in ways most students don't realize.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+          When should we start?
+          <i class="ti ti-chevron-down faq-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="faq-a">Summer before senior year (June–August) is ideal. That gives us time to build your strategy, develop strong PIQs, and review everything well before the November 30 deadline.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+          Do you offer payment plans?
+          <i class="ti ti-chevron-down faq-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="faq-a">Yes — 2- and 3-installment plans on Complete and All In packages at no extra charge. Just mention it when you reach out.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" aria-labelledby="cta-h">
+  <h2 id="cta-h">Start with a free<br>diagnostic session.</h2>
+  <p>No commitment. Just clarity on where you stand.</p>
+  <a href="https://calendly.com/danieltlwong-berkeley" class="btn-blue" style="margin-bottom:1.5rem;display:inline-block;">Book your free session →</a>
+  <div style="margin-top:1rem;text-align:center;">
+    <p style="font-size:13px;color:rgba(0,50,98,0.5);margin-bottom:4px;">Contact:</p>
+    <a href="mailto:danieltlwong@berkeley.edu" style="font-size:15px;font-weight:500;color:#003262;text-decoration:none;display:inline-block;">danieltlwong@berkeley.edu</a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">UC <span>Strategy</span> Group</span>
+      <ul class="footer-links">
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#campuses">Campuses</a></li>
+        <li><a href="#diagnostic">Free session</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="mailto:danieltlwong@berkeley.edu">Contact</a></li>
+      </ul>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+        <a href="mailto:danieltlwong@berkeley.edu" style="font-size:12px;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.01em;"><span style="color:rgba(255,255,255,0.28);margin-right:4px;">Contact:</span>danieltlwong@berkeley.edu</a>
+        <span class="footer-copy">© 2026 UC Strategy Group · Not affiliated with the University of California</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-btn').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.style.display = 'none';
+      b.querySelector('.faq-chevron').style.transform = '';
+    });
+    if (!isOpen) {
+      btn.setAttribute('aria-expanded', 'true');
+      answer.style.display = 'block';
+      btn.querySelector('.faq-chevron').style.transform = 'rotate(180deg)';
+    }
+  }
+
+  function toggleNav(btn) {
+    const nav = document.getElementById('nav-links');
+    const isOpen = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+    btn.innerHTML = isOpen
+      ? '<i class="ti ti-x" aria-hidden="true"></i>'
+      : '<i class="ti ti-menu-2" aria-hidden="true"></i>';
+  }
+
+  document.querySelectorAll('#nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('nav-links').classList.remove('open');
+      const btn = document.querySelector('.nav-hamburger');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = '<i class="ti ti-menu-2" aria-hidden="true"></i>';
+    });
+  });
+
+  // Scroll reveal
+  (function () {
+    const ease = 'cubic-bezier(.22,.61,.36,1)';
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const delay = parseFloat(e.target.dataset.revealDelay) || 0;
+        e.target.style.transition =
+          `opacity .62s ${delay}s ${ease}, transform .62s ${delay}s ${ease}`;
+        e.target.classList.add('in-view');
+        observer.unobserve(e.target);
+        setTimeout(() => {
+          e.target.style.transition = '';
+        }, (delay + 0.7) * 1000);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -28px 0px' });
+
+    const groups = [
+      '.edge-card', '.counselor-card', '.plan-card',
+      '.process-step', '.faq-item', '.diag-step', '.essay-callout',
+      '.hiw-grid > div', '.campus-top > div', '.campus-bot > div',
+    ];
+
+    groups.forEach(sel => {
+      document.querySelectorAll(sel).forEach((el, i) => {
+        el.classList.add('reveal');
+        el.dataset.revealDelay = ((i % 5) * 0.09).toFixed(2);
+        observer.observe(el);
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
