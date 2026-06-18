@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started — UC Strategy Group</title>
+  <meta name="description" content="Book your session and pay via Zelle to get started with UC Strategy Group." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; color: #003262; background: #f5f8fc; font-size: 16px; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* NAV */
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 68px;
+      background: rgba(0,30,60,0.97);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-size: 14px; font-weight: 700; color: #fff;
+      text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-logo-dot { width: 7px; height: 7px; border-radius: 50%; background: #FDB515; display: inline-block; }
+    .nav-logo span { color: #FDB515; }
+    .nav-back {
+      font-size: 12.5px; color: rgba(255,255,255,0.5); text-decoration: none;
+      letter-spacing: 0.04em; display: flex; align-items: center; gap: 6px;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: #fff; }
+
+    /* MAIN */
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; }
+
+    .payment-card {
+      background: #fff; border: 1px solid #e0e8f0; border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,50,98,0.1);
+      max-width: 560px; width: 100%; overflow: hidden;
+    }
+
+    .payment-header {
+      background: linear-gradient(135deg, #001e3c, #003d7a);
+      padding: 2.5rem 2.5rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    .payment-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(253,181,21,0.12) 0%, transparent 60%);
+    }
+    .payment-eyebrow {
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #FDB515;
+      margin-bottom: 10px; position: relative;
+    }
+    .payment-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 700; color: #fff;
+      line-height: 1.15; letter-spacing: -0.02em;
+      position: relative;
+    }
+    .payment-header p {
+      font-size: 14px; color: rgba(255,255,255,0.45);
+      margin-top: 8px; position: relative;
+    }
+
+    .payment-body { padding: 2.5rem; }
+
+    .payment-step {
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .payment-step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #001e3c, #003d7a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #FDB515;
+      font-family: 'Playfair Display', serif;
+    }
+    .step-content h3 { font-size: 14.5px; font-weight: 700; color: #001e3c; margin-bottom: 4px; }
+    .step-content p { font-size: 13px; color: #5c7a9f; line-height: 1.65; }
+
+    .divider { border: none; border-top: 1px solid #eef2f8; margin: 2rem 0; }
+
+    .qr-section { text-align: center; }
+    .qr-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #8fa3b8; margin-bottom: 1.25rem;
+    }
+    .qr-wrap {
+      width: 200px; height: 200px; margin: 0 auto 1rem;
+      border: 2px dashed #c8d4e0; border-radius: 12px;
+      background: #f8fafd;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px;
+      overflow: hidden;
+    }
+    .qr-wrap img {
+      width: 100%; height: 100%; object-fit: contain;
+      border-radius: 10px;
+    }
+    .qr-placeholder-text {
+      font-size: 12px; color: #a0b4c8; font-weight: 500; text-align: center; line-height: 1.5;
+      padding: 0 1rem;
+    }
+    .qr-note {
+      font-size: 12px; color: #8fa3b8; margin-top: 0.5rem;
+    }
+    .back-btn {
+      display: inline-block; margin-top: 1.25rem;
+      font-size: 13px; font-weight: 600; color: #003262;
+      text-decoration: none; border: 1px solid #d0dcea;
+      border-radius: 99px; padding: 7px 18px;
+      transition: background .2s, color .2s;
+    }
+    .back-btn:hover { background: #003262; color: #fff; }
+
+    .zelle-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #f0f4ff; border: 1px solid #d0dbff;
+      border-radius: 99px; padding: 6px 16px; margin-top: 1rem;
+      font-size: 12.5px; font-weight: 600; color: #4040cc;
+    }
+    .zelle-dot { width: 8px; height: 8px; border-radius: 50%; background: #6c63ff; }
+
+    .payment-footer {
+      background: #f8fafd; border-top: 1px solid #eef2f8;
+      padding: 1.25rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .payment-footer p { font-size: 12px; color: #8fa3b8; }
+    .payment-footer a {
+      font-size: 12px; color: #003262; font-weight: 600;
+      text-decoration: none; border-bottom: 1px solid #FDB515; padding-bottom: 1px;
+      transition: color .2s;
+    }
+    .payment-footer a:hover { color: #FDB515; }
+
+    /* FOOTER */
+    .footer { background: #000f20; padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.04); }
+    .footer-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.22); letter-spacing: 0.08em; text-transform: uppercase; }
+    .footer-logo span { color: rgba(253,181,21,0.4); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.12); }
+
+    @media (max-width: 600px) {
+      .nav { padding: 0 1.25rem; }
+      .payment-header { padding: 2rem 1.5rem 1.75rem; }
+      .payment-body { padding: 2rem 1.5rem; }
+      .payment-footer { padding: 1rem 1.5rem; }
+      .footer { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      UC <span>&nbsp;Strategy</span>&nbsp;Group
+    </a>
+  </div>
+</nav>
+
+<main>
+  <div class="payment-card">
+
+    <div class="payment-header">
+      <div class="payment-eyebrow">Get started</div>
+      <h1>Complete your payment</h1>
+      <p>We accept Zelle for all plans and sessions. Scan the QR code below to send payment.</p>
+    </div>
+
+    <div class="payment-body">
+
+      <div class="payment-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Book your free diagnostic</h3>
+          <p>Schedule your first session via Calendly before or after payment — no commitment required.</p>
+        </div>
+      </div>
+
+      <div class="payment-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Send payment via Zelle</h3>
+          <p>Scan the QR code below or send directly to the Zelle address listed. Include your name and selected plan in the memo.</p>
+        </div>
+      </div>
+
+      <div class="payment-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>We'll confirm and get started</h3>
+          <p>Once payment is received you'll get a confirmation and we'll schedule your first working session.</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="qr-section">
+        <div class="qr-label">Zelle QR Code</div>
+        <div class="qr-wrap">
+          <img src="zelle-qr.png" alt="Zelle QR Code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <p class="qr-placeholder-text" style="display:none;">Replace zelle-qr.png<br>with your Zelle QR code</p>
+        </div>
+        <p class="qr-note">Open your banking app and scan to pay</p>
+        <a href="index.html" class="back-btn">← Back to pricing</a>
+      </div>
+
+    </div>
+
+    <div class="payment-footer">
+      <p>Questions? Reach out before paying.</p>
+      <a href="mailto:danieltlwong@berkeley.edu">danieltlwong@berkeley.edu</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">UC <span>Strategy</span> Group</span>
+      <span class="footer-copy">© 2026 UC Strategy Group · Not affiliated with the University of California</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
