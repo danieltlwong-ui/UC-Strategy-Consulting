@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* ── The Admit File — design tokens ────────────────────────────── */
+:root {
+  --ground: #0a1526;
+  --surface: #101f38;
+  --surface-2: #16294a;
+  --surface-3: #1c3157;
+  --ink: #e9eef6;
+  --ink-muted: #93a7c4;
+  --ink-faint: #5d6f8c;
+  --brass: #c9a227;
+  --brass-soft: rgba(201, 162, 39, 0.4);
+  --brass-rule: rgba(201, 162, 39, 0.22);
+  --brass-rule-strong: rgba(201, 162, 39, 0.5);
+  --gold: #f2b705;
+  --steel: #6f9fd4;
+  --steel-soft: rgba(111, 159, 212, 0.35);
+  --sky: #8fc7ea;
+  --denim: #2f5680;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ground: #f1f3f8;
+    --surface: #ffffff;
+    --surface-2: #e8ecf3;
+    --surface-3: #dde3ee;
+    --ink: #0b1526;
+    --ink-muted: #4d5b76;
+    --ink-faint: #8493ab;
+    --brass: #9c7b1c;
+    --brass-soft: rgba(156, 123, 28, 0.32);
+    --brass-rule: rgba(11, 21, 38, 0.14);
+    --brass-rule-strong: rgba(11, 21, 38, 0.32);
+    --gold: #b8860b;
+    --steel: #2f6690;
+    --steel-soft: rgba(47, 102, 144, 0.24);
+    --sky: #1f4d70;
+    --denim: #16324a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: #0a1526;
+  --surface: #101f38;
+  --surface-2: #16294a;
+  --surface-3: #1c3157;
+  --ink: #e9eef6;
+  --ink-muted: #93a7c4;
+  --ink-faint: #5d6f8c;
+  --brass: #c9a227;
+  --brass-soft: rgba(201, 162, 39, 0.4);
+  --brass-rule: rgba(201, 162, 39, 0.22);
+  --brass-rule-strong: rgba(201, 162, 39, 0.5);
+  --gold: #f2b705;
+  --steel: #6f9fd4;
+  --steel-soft: rgba(111, 159, 212, 0.35);
+  --sky: #8fc7ea;
+  --denim: #2f5680;
+}
+
+:root[data-theme="light"] {
+  --ground: #f1f3f8;
+  --surface: #ffffff;
+  --surface-2: #e8ecf3;
+  --surface-3: #dde3ee;
+  --ink: #0b1526;
+  --ink-muted: #4d5b76;
+  --ink-faint: #8493ab;
+  --brass: #9c7b1c;
+  --brass-soft: rgba(156, 123, 28, 0.32);
+  --brass-rule: rgba(11, 21, 38, 0.14);
+  --brass-rule-strong: rgba(11, 21, 38, 0.32);
+  --gold: #b8860b;
+  --steel: #2f6690;
+  --steel-soft: rgba(47, 102, 144, 0.24);
+  --sky: #1f4d70;
+  --denim: #16324a;
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-brass: var(--brass);
+  --color-gold: var(--gold);
+  --color-steel: var(--steel);
+  --color-steel-soft: var(--steel-soft);
+  --color-sky: var(--sky);
+  --color-denim: var(--denim);
+  --color-rule: var(--brass-rule);
+  --color-rule-strong: var(--brass-rule-strong);
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--brass-rule);
+}
+
+html {
+  background: var(--ground);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "tnum" 1;
+}
+
+::selection {
+  background: var(--gold);
+  color: #0a1526;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ground);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brass-rule-strong);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+:root[data-cursor="custom"],
+:root[data-cursor="custom"] a,
+:root[data-cursor="custom"] button {
+  cursor: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
