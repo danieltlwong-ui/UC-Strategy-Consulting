@@ -3,6 +3,7 @@ import { pricing } from "@/data/content";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Scene } from "@/components/Scene";
+import { PaperGrainField } from "@/components/PaperGrainField";
 
 export function Pricing() {
   return (
@@ -12,6 +13,7 @@ export function Pricing() {
       variant="unfold"
       ariaLabelledby="pricing-heading"
       contentClassName="mx-auto max-w-[1180px]"
+      background={<PaperGrainField />}
     >
       <SectionHeading
         eyebrow={pricing.eyebrow}
@@ -21,7 +23,7 @@ export function Pricing() {
       />
 
       {/* Per-essay ledger rows */}
-        <div className="border border-rule mb-14">
+        <div className="border border-rule mb-14 bg-ground">
           {pricing.perEssay.map((item, i) => (
             <Reveal key={item.name} delay={i * 0.05} direction={i % 2 === 0 ? "left" : "right"} distance="sm">
               <div

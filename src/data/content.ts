@@ -432,13 +432,13 @@ export const pricing = {
 export const paymentPage = {
   fileNo: "File No. 09 / 09",
   eyebrow: "Next steps",
-  heading: "Let's get your file moving",
+  heading: "Let's get your file moving.",
   intro:
     "Every plan starts the same way: a free diagnostic session, then payment via Zelle before your first working session.",
   steps: [
     {
       title: "Book your free diagnostic",
-      body: "Pick whichever consultant's calendar works best for your schedule",
+      body: "Pick whichever consultant's calendar works best for your schedule.",
     },
     {
       title: "Send payment via Zelle",
@@ -486,13 +486,11 @@ export const faq: FaqItem[] = [
     question: "How do meetings take place?",
     answer:
       "Format and scheduling are confirmed when you book your free diagnostic session.",
-    flagged: true,
   },
   {
     question: "When should I start working with a consultant?",
     answer:
       "There's no fixed start date. Our process runs from onboarding through the November UC deadline, so the right time to start is whenever you're ready. The free diagnostic is a good way to figure out your timeline.",
-    flagged: true,
   },
   {
     question: "Do you offer payment plans?",

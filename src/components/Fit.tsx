@@ -1,6 +1,7 @@
 import { fit } from "@/data/content";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Scene } from "@/components/Scene";
+import { PaperGrainField } from "@/components/PaperGrainField";
 
 const REASONS = ["Protect Review Quality", "Ensure Genuine Fit", "Preserve Applicant Trust"];
 
@@ -12,6 +13,7 @@ export function Fit() {
       variant="pageTurn"
       ariaLabelledby="fit-heading"
       contentClassName="mx-auto max-w-[720px]"
+      background={<PaperGrainField />}
     >
       <Reveal className="border border-rule bg-surface">
         <div className="px-6 md:px-12 pt-8 pb-6 border-b border-rule">

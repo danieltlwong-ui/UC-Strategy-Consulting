@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { process } from "@/data/content";
 import { Scene } from "@/components/Scene";
+import { PaperGrainField } from "@/components/PaperGrainField";
+import { HighlightMark } from "@/components/primitives/HighlightMark";
 
 // Per-stage fields that don't live in the shared content step data — these
 // are display-only routing-slip fields, not separate editorial content.
@@ -38,6 +40,7 @@ export function Process() {
       variant="openDocument"
       ariaLabelledby="process-heading"
       contentClassName="mx-auto max-w-[800px]"
+      background={<PaperGrainField />}
     >
       <div className="border border-rule bg-surface">
         <div className="px-6 md:px-12 pt-8 pb-6 border-b border-rule">
@@ -72,7 +75,7 @@ export function Process() {
                   Stage {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-serif text-[20px] font-semibold text-ink mb-2">
-                  {step.title}
+                  <HighlightMark>{step.title}</HighlightMark>
                 </h3>
                 <p className="text-[13.5px] leading-[1.75] text-ink-muted max-w-[58ch] mb-3">
                   {step.body}

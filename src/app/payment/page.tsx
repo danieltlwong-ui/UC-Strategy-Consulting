@@ -49,10 +49,6 @@ export default async function PaymentPage({
 
       <main className="px-5 md:px-8 py-20 md:py-28">
         <Reveal className="mx-auto max-w-[640px]">
-          <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-brass mb-4 flex items-center gap-2.5">
-            <span className="w-1.5 h-1.5 border border-brass rotate-45" aria-hidden />
-            {paymentPage.fileNo} — {paymentPage.eyebrow}
-          </div>
           <h1 className="font-serif italic font-semibold text-[clamp(30px,4.5vw,48px)] leading-[1.1] text-ink text-balance mb-5">
             {paymentPage.heading}
           </h1>
@@ -99,9 +95,6 @@ export default async function PaymentPage({
           <ZelleQr />
 
           <div className="text-center border border-rule p-8 md:p-10">
-            <div className="font-mono text-[10.5px] tracking-[0.1em] uppercase text-ink-faint mb-5">
-              {finalCta.scheduleLabel}
-            </div>
             <Magnetic className="block mb-9">
               <a
                 href={finalCta.bookingUrl}

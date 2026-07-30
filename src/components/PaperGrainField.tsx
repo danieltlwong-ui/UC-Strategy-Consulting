@@ -50,13 +50,13 @@ export function PaperGrainField() {
     <div ref={wrapRef} className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
       <svg className="absolute w-0 h-0">
         <filter id={filterId}>
-          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" stitchTiles="stitch" />
           <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0" />
         </filter>
       </svg>
       <div
         className="absolute inset-0"
-        style={{ filter: `url(#${filterId})`, opacity: 0.4, mixBlendMode: "multiply" }}
+        style={{ filter: `url(#${filterId})`, opacity: 0.24, mixBlendMode: "multiply" }}
       />
       <div
         ref={sheenRef}

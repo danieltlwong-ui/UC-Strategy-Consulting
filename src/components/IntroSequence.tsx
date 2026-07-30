@@ -21,7 +21,6 @@ export function IntroSequence() {
   const sealLeftRef = useRef<SVGPathElement>(null);
   const sealRightRef = useRef<SVGPathElement>(null);
   const captionRef = useRef<HTMLSpanElement>(null);
-  const fileNoRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -36,7 +35,7 @@ export function IntroSequence() {
     const alreadyPlayed =
       typeof sessionStorage !== "undefined" && sessionStorage.getItem(SESSION_KEY) === "1";
 
-    const els = [fileNoRef, headlineRef, subRef, ctaRef, statsRef].map((r) => r.current);
+    const els = [headlineRef, subRef, ctaRef, statsRef].map((r) => r.current);
 
     const ctx = gsap.context(() => {
       if (reduced || alreadyPlayed) {
@@ -84,8 +83,7 @@ export function IntroSequence() {
       .to(sealRightRef.current, { x: 46, rotate: 18, duration: 0.6, ease: "power3.in" }, "<")
       .to(sealWrapRef.current, { opacity: 0, scale: 1.3, duration: 0.4 }, "-=0.35")
       .set(sealWrapRef.current, { display: "none" })
-      .to(fileNoRef.current, { opacity: 1, y: 0, duration: 0.5 }, "-=0.3")
-      .to(headlineRef.current, { opacity: 1, y: 0, duration: 0.7 }, "-=0.35")
+      .to(headlineRef.current, { opacity: 1, y: 0, duration: 0.7 }, "-=0.3")
       .to(subRef.current, { opacity: 1, y: 0, duration: 0.6 }, "-=0.45")
       .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
       .to(statsRef.current, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4");
@@ -152,14 +150,6 @@ export function IntroSequence() {
           </span>
         </div>
       )}
-
-      <div
-        ref={fileNoRef}
-        className="font-mono text-[11.5px] tracking-[0.14em] uppercase text-brass mb-6 flex items-center gap-2.5 relative z-10"
-      >
-        <span className="w-1.5 h-1.5 border border-brass rotate-45" aria-hidden />
-        {intro.fileNo} — Admissions Record
-      </div>
 
       <h1
         ref={headlineRef}

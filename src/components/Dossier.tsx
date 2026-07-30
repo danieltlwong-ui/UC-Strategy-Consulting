@@ -9,6 +9,7 @@ import { Rule } from "@/components/primitives/Rule";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Tilt } from "@/components/primitives/Tilt";
 import { Scene } from "@/components/Scene";
+import { PaperGrainField } from "@/components/PaperGrainField";
 
 const NOTE_ROTATIONS = [-2, 1.5, -1, 2, -1.5, 1];
 
@@ -20,6 +21,7 @@ export function Dossier() {
       variant="pageTurn"
       ariaLabelledby="dossier-heading"
       contentClassName="mx-auto max-w-[1180px]"
+      background={<PaperGrainField />}
     >
       <SectionHeading
         eyebrow="The team"
@@ -63,20 +65,21 @@ export function Dossier() {
                   <span className="text-[12.5px] text-ink-faint">{member.school}</span>
                 </div>
 
-                <div className="relative inline-block overflow-hidden mb-1">
-                  <h3 className="font-serif italic font-semibold text-[26px] md:text-[30px] text-ink">
-                    {member.name}
+                <motion.div
+                  className="overflow-hidden whitespace-nowrap mb-1"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "auto" }}
+                  viewport={{ once: false, amount: 0.7 }}
+                  transition={{ duration: 0.65, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+                >
+                  <h3 className="font-serif italic font-semibold text-[26px] md:text-[30px] text-ink whitespace-nowrap">
+                    {member.name}{" "}
+                    <span
+                      aria-hidden
+                      className="cursor-blink inline-block w-[1.5px] h-[1.15em] bg-ink align-text-bottom"
+                    />
                   </h3>
-                  <motion.span
-                    aria-hidden
-                    className="absolute inset-0 bg-ink"
-                    style={{ transformOrigin: "right" }}
-                    initial={{ scaleX: 1 }}
-                    whileInView={{ scaleX: 0 }}
-                    viewport={{ once: false, amount: 0.7 }}
-                    transition={{ duration: 0.55, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
-                  />
-                </div>
+                </motion.div>
 
                 <p className="font-mono text-[11.5px] tracking-[0.05em] uppercase text-ink-faint mb-5">
                   {member.major}
@@ -103,7 +106,7 @@ export function Dossier() {
 
                 <div className="border-l-2 border-steel pl-4 py-1 max-w-[56ch]">
                   <span className="font-mono text-[10px] tracking-[0.1em] uppercase text-steel block mb-1">
-                    Fun fact
+                    Marginalia
                   </span>
                   <p className="text-[13px] leading-[1.7] text-ink-muted">{member.funFact}</p>
                 </div>

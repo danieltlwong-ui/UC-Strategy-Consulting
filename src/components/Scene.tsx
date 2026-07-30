@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { CSSProperties, ReactNode } from "react";
 import { tones, type Tone } from "@/lib/tones";
 import { ensureGsap, prefersReducedMotion } from "@/lib/motion";
@@ -87,7 +88,20 @@ export function Scene({
       },
     });
 
+    // ScrollTrigger caches each section's start/end scroll positions at
+    // creation time. If a section's layout shifts afterward (fonts
+    // swapping in, images loading, or just a taller/shorter rebuild of its
+    // content), that cached range goes stale — the entrance tween's
+    // "settled" endpoint no longer lines up with where the section
+    // actually locks in, so it can visually arrive while the tween still
+    // reports incomplete progress, leaving it faded/scaled indefinitely.
+    // Refreshing once after paint and once more after web fonts finish
+    // loading recalculates against the real, settled layout.
+    const raf = requestAnimationFrame(() => ScrollTrigger.refresh());
+    document.fonts?.ready?.then(() => ScrollTrigger.refresh());
+
     return () => {
+      cancelAnimationFrame(raf);
       tween.scrollTrigger?.kill();
       tween.kill();
     };

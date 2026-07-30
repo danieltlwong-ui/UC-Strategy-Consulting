@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <a
         href={`#${SCROLLER_ID}`}
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-gold focus:text-ground focus:px-4 focus:py-2 font-mono text-[12px] uppercase"
+        className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:top-2 focus-visible:left-2 focus-visible:z-[100] focus-visible:bg-gold focus-visible:text-ground focus-visible:px-4 focus-visible:py-2 font-mono text-[12px] uppercase"
       >
         Skip to main content
       </a>
