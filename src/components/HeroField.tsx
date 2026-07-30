@@ -87,7 +87,7 @@ export function HeroField() {
 
         const offset = Math.sqrt((d.x - d.homeX) ** 2 + (d.y - d.homeY) ** 2);
         const proximity = Math.max(0, 1 - dist / REPEL_RADIUS);
-        const opacity = 0.09 + proximity * 0.55 + Math.min(offset / 30, 1) * 0.15;
+        const opacity = 0.25 + proximity * 0.45 + Math.min(offset / 30, 1) * 0.12;
         const radius = 1 + proximity * 1.6;
 
         const brass = [201, 162, 39];

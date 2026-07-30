@@ -16,8 +16,6 @@ export function Tilt({
   const springConfig = { stiffness: 220, damping: 22, mass: 0.4 };
   const rotateX = useSpring(useTransform(py, [0, 1], [8, -8]), springConfig);
   const rotateY = useSpring(useTransform(px, [0, 1], [-8, 8]), springConfig);
-  const glareX = useTransform(px, [0, 1], ["0%", "100%"]);
-  const glareY = useTransform(py, [0, 1], ["0%", "100%"]);
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
@@ -33,25 +31,10 @@ export function Tilt({
   };
 
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-      style={{ rotateX, rotateY, transformPerspective: 700 }}
-      className={`relative ${className}`}
-    >
-      {children}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: useTransform(
-            [glareX, glareY],
-            ([gx, gy]) =>
-              `radial-gradient(circle 140px at ${gx} ${gy}, rgba(242,183,5,0.16), transparent 70%)`
-          ),
-        }}
-      />
-    </motion.div>
+    <div ref={ref} onMouseMove={handleMove} onMouseLeave={handleLeave} className={`relative ${className}`}>
+      <motion.div style={{ rotateX, rotateY, transformPerspective: 700 }} className="relative">
+        {children}
+      </motion.div>
+    </div>
   );
 }
