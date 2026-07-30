@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { process } from "@/data/content";
 import { Scene } from "@/components/Scene";
-import { PaperGrainField } from "@/components/PaperGrainField";
 import { HighlightMark } from "@/components/primitives/HighlightMark";
 
 // Per-stage fields that don't live in the shared content step data — these
@@ -40,7 +39,6 @@ export function Process() {
       variant="openDocument"
       ariaLabelledby="process-heading"
       contentClassName="mx-auto max-w-[800px]"
-      background={<PaperGrainField />}
     >
       <div className="border border-rule bg-surface">
         <div className="px-6 md:px-12 pt-8 pb-6 border-b border-rule">

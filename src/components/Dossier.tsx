@@ -9,7 +9,6 @@ import { Rule } from "@/components/primitives/Rule";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Tilt } from "@/components/primitives/Tilt";
 import { Scene } from "@/components/Scene";
-import { PaperGrainField } from "@/components/PaperGrainField";
 
 const NOTE_ROTATIONS = [-2, 1.5, -1, 2, -1.5, 1];
 
@@ -21,7 +20,6 @@ export function Dossier() {
       variant="pageTurn"
       ariaLabelledby="dossier-heading"
       contentClassName="mx-auto max-w-[1180px]"
-      background={<PaperGrainField />}
     >
       <SectionHeading
         eyebrow="The team"

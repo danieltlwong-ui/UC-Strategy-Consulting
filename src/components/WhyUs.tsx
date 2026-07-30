@@ -5,7 +5,6 @@ import { motion, useMotionValue, animate } from "framer-motion";
 import { whyUs } from "@/data/content";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Scene } from "@/components/Scene";
-import { PaperGrainField } from "@/components/PaperGrainField";
 
 const CARD_POSITIONS = [
   "absolute z-10 left-[1%] top-[4%] w-[280px]",
@@ -134,7 +133,6 @@ export function WhyUs() {
       variant="slideRecord"
       ariaLabelledby="why-us-heading"
       contentClassName="mx-auto max-w-[1180px]"
-      background={<PaperGrainField />}
     >
       <div className="text-center mb-6">
         <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-brass inline-flex items-center gap-2.5">
