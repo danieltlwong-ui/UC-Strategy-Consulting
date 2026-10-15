@@ -1,4 +1,5 @@
 import { Nav } from "@/components/Nav";
+import { HashScroll } from "@/components/HashScroll";
 import { IntroSequence } from "@/components/IntroSequence";
 import { Dossier } from "@/components/Dossier";
 import { WhyUs } from "@/components/WhyUs";
@@ -22,6 +23,7 @@ export default function Home() {
         Skip to main content
       </a>
       <Nav />
+      <HashScroll />
       <main id={SCROLLER_ID}>
         <IntroSequence />
         <Dossier />

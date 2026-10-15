@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { brand, contacts, finalCta, paymentPage, pricing } from "@/data/content";
-import { Reveal } from "@/components/primitives/Reveal";
 import { Magnetic } from "@/components/primitives/Magnetic";
 import { ZelleQr } from "@/components/ZelleQr";
 
@@ -48,7 +47,7 @@ export default async function PaymentPage({
       </header>
 
       <main className="px-5 md:px-8 py-20 md:py-28">
-        <Reveal className="mx-auto max-w-[640px]">
+        <div className="mx-auto max-w-[640px]">
           <h1 className="font-serif italic font-semibold text-[clamp(30px,4.5vw,48px)] leading-[1.1] text-ink text-balance mb-5">
             {paymentPage.heading}
           </h1>
@@ -120,7 +119,7 @@ export default async function PaymentPage({
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
       </main>
 
       <footer role="contentinfo" className="border-t border-rule py-10 px-5 md:px-8">

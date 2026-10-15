@@ -49,25 +49,26 @@ export function Pricing() {
         </div>
 
         {/* Package plans */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-rule border border-rule">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-rule border border-rule">
           {pricing.plans.map((plan, i) => (
             <Reveal
               key={plan.name}
               delay={i * 0.06}
-              direction={i === 0 ? "left" : i === 2 ? "right" : "up"}
-              className={`p-8 flex flex-col ${plan.featured ? "bg-surface" : "bg-ground"}`}
+              direction={i === 0 ? "left" : i === pricing.plans.length - 1 ? "right" : "up"}
+              className={`p-7 flex flex-col ${plan.featured ? "bg-surface" : "bg-ground"}`}
             >
-              <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-[10.5px] tracking-[0.1em] uppercase text-ink-faint">
-                  {plan.name}
-                </span>
+              {/* Badge slot is reserved on every card so names, prices and lists line up */}
+              <div className="h-6 mb-3">
                 {plan.badge && (
-                  <span className="font-mono text-[10px] tracking-[0.06em] uppercase text-ground bg-gold px-2 py-1">
+                  <span className="inline-block font-mono text-[10px] tracking-[0.06em] uppercase text-ground bg-gold px-2 py-1">
                     {plan.badge}
                   </span>
                 )}
               </div>
-              <div className="font-serif text-[40px] leading-none text-ink mb-1.5 [font-variant-numeric:tabular-nums]">
+              <span className="block font-mono text-[10.5px] tracking-[0.1em] uppercase text-ink-faint mb-6">
+                {plan.name}
+              </span>
+              <div className="font-serif text-[clamp(28px,3vw,34px)] leading-[1.05] text-ink mb-1.5 whitespace-nowrap [font-variant-numeric:tabular-nums]">
                 {plan.price}
               </div>
               <div className="text-[12px] text-ink-faint mb-7">{plan.billing}</div>

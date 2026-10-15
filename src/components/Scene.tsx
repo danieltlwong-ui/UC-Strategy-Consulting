@@ -14,22 +14,22 @@ const VARIANTS: Record<
   { from: gsap.TweenVars; to: gsap.TweenVars; origin: string }
 > = {
   pageTurn: {
-    from: { rotateX: -20, y: 70, opacity: 0.1 },
+    from: { rotateX: -20, y: 70, opacity: 0.3 },
     to: { rotateX: 0, y: 0, opacity: 1 },
     origin: "top center",
   },
   unfold: {
-    from: { scaleY: 0.28, opacity: 0.15 },
+    from: { scaleY: 0.6, opacity: 0.3 },
     to: { scaleY: 1, opacity: 1 },
     origin: "top center",
   },
   slideRecord: {
-    from: { y: 220, opacity: 0.1 },
+    from: { y: 160, opacity: 0.3 },
     to: { y: 0, opacity: 1 },
     origin: "center",
   },
   openDocument: {
-    from: { scale: 0.82, opacity: 0.1 },
+    from: { scale: 0.88, opacity: 0.3 },
     to: { scale: 1, opacity: 1 },
     origin: "center",
   },
@@ -82,8 +82,11 @@ export function Scene({
       ease: "none",
       scrollTrigger: {
         trigger,
-        start: "top bottom",
-        end: "top top",
+        // Settle by the time the section's top reaches ~40% down the
+        // viewport, so it is already fully readable on arrival instead of
+        // sitting half-faded until it locks at the very top.
+        start: "top 90%",
+        end: "top 40%",
         scrub: 0.15,
       },
     });
