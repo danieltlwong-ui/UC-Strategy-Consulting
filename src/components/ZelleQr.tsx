@@ -64,8 +64,9 @@ export function ZelleQr() {
         className="text-center text-[12px] mt-5 pt-5"
         style={{ opacity: 0.55, borderTop: "1px solid rgba(32,36,46,0.08)" }}
       >
-        Can&rsquo;t scan a QR code? Email {brand.contactEmail} and we&rsquo;ll send the Zelle details
-        directly.
+        Can&rsquo;t scan a QR code? Email{" "}
+        <span className="font-medium">{brand.contactEmail}</span>{" "}
+        and we&rsquo;ll send the Zelle details directly.
       </p>
     </div>
   );
